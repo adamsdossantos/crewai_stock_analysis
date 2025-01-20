@@ -1,0 +1,42 @@
+get_stock_analysis_ticker_task:
+  description: >
+    for a given ticker: {ticker} fetch the data from yfinance and return the data to the next agent
+  expected_output: >
+    ticker kpis:
+      - ticker symbol
+      - company name
+      - current price
+      - 52-week  high
+      - 52-week low
+      - market cap
+      - P/E ratio
+      - P/B ration
+      - Debt-to-equity ratio
+      - Current ratio
+      - Dividend yield (%)
+      - 5-year revenue growth rate (%)
+      - Free cash flow
+      - Profit margin
+      - Operating margin
+      - Earning growth 
+      - Revenue growth
+      - Analyst target price
+      - Beta
+  agent: stock_research_manager
+
+analyse_ticker_task:
+  description: >
+    first you get the  warren buffett's investment principles by using the  file read tool
+    then you provide a comprehensive analysis of the ticker
+    write a short and concise pros on why warrent buffet would invest in this company and why he would not
+    then summarize  the company evaluation and provide a recommendation
+    then you give a warren buffett recommendation from 0 to 10 when 10 is best
+    save the evaluation to a markdown file
+  expected_output: >
+    - pros on why warren buffet would invest in the company
+    - cons on why warren buffet would no invest in the company
+    - company evaluation summary
+    - warren buffet buy recomendation
+    - you MUST save it to 'analysis/{ticker}_stock_analysis.md'
+    - Formatted as markdown without '```'
+  agent: senior_stock_analyst
